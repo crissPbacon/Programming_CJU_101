@@ -1,0 +1,4 @@
+﻿  main.cpp
+C:\Users\Cju\Documents\GitHub\Programming_CJU_101\4주차\문 2\4주차 2번\main.cpp(14,10): warning C4804: '<': 연산에 'bool' 형식을 사용하는 것은 안전하지 않습니다.
+C:\Users\Cju\Documents\GitHub\Programming_CJU_101\4주차\문 2\4주차 2번\main.cpp(30,10): warning C4804: '<': 연산에 'bool' 형식을 사용하는 것은 안전하지 않습니다.
+  4주차 2번.vcxproj -> C:\Users\Cju\Documents\GitHub\Programming_CJU_101\4주차\문 2\4주차 2번\x64\Debug\4주차 2번.exe
