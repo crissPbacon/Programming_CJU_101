@@ -1,0 +1,3 @@
+﻿  main.cpp
+C:\Users\kys11\OneDrive\사진\바탕 화면\github files\Programming_CJU_101\5주차\문4\5주차 4번\main.cpp(28): warning C4715: 'rec_func': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  5주차 4번.vcxproj -> C:\Users\kys11\OneDrive\사진\바탕 화면\github files\Programming_CJU_101\5주차\문4\5주차 4번\x64\Debug\5주차 4번.exe
