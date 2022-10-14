@@ -37,13 +37,17 @@ int password_func(void)			// password_func works like this......
 		printf("not matched, retry......\n\n\n");
 		return password_func();		//  input numbers again......
 	}
+	else if (res > password)
+	{
+		printf("not matched, retry......\n\n\n");		//  input numbers again......
+		return password_func();
+	}
 }
 
 
 int main(void)		// this is main......
 {
 	password_func();		// call password_func
-	printf("well done!\n\n");
 
 	return 0;
 }
