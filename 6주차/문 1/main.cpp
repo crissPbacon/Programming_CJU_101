@@ -1,53 +1,57 @@
 #include<stdio.h>
-#define password 0+0+1+1+1+8	// correct password is my birthday, 001118......
+#include<stdlib.h>
 
-int password_func(void);	
+void func(void);
+void func2(void);
 
-int password_func(void)			// password_func works like this......
+void func(void)
 {
-	int ary[6];
-	int i;
-	int res = 0;
+	int ary[6] = { 0, 0, 1, 1, 1, 8 };  //  initial password
+	int input[6];
+	int i = 0;
 
-	printf("input password......\n");
 
-	for (i = 0; i < 6; i++)		// input numbers......
+	for (i = 0; i < 6; i++)
 	{
-		scanf_s("%d", &ary[i]);
+		scanf_s("%d", &input[i]);
 	}
 
-	for (i = 0; i < 6; i++)		// plus all input numbers and remember......
+	if (ary[0] == input[0])  // compare input with initial password
 	{
-		res += ary[i];
+		if (ary[1] == input[1])
+		{
+			if (ary[2] == input[2])
+			{
+				if (ary[3] == input[3])
+				{
+					if (ary[4] == input[4])
+					{
+						if (ary[5] == input[5])
+						{
+							printf("normal termination..\n\n");
+							system("pause");
+						}
+					}
+				}
+			}
+		}
 	}
-
-	for (i = 0; i < 6; i++)		// print input numbers......
+	else
 	{
-		printf("%4d", ary[i]);
-	}
-
-	printf("\n");
-
-	if (res == password)
-	{
-		printf("normal termination......\n");
-	}
-	else if (res < password)
-	{
-		printf("not matched, retry......\n\n\n");
-		return password_func();		//  input numbers again......
-	}
-	else if (res > password)
-	{
-		printf("not matched, retry......\n\n\n");		//  input numbers again......
-		return password_func();
+		printf("not matched, retry..\n\n");
+		return func2();  //  to input again
 	}
 }
 
-
-int main(void)		// this is main......
+void func2(void)
 {
-	password_func();		// call password_func
+	func();
+}
 
+
+int main(void)	  // 
+{
+	func();
 	return 0;
 }
+
