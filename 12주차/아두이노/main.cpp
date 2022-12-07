@@ -4,7 +4,7 @@
 #define maxangle 75
 #define minangle 0
 
-int ledR2 = 2;
+int ledR2 = 2;      // 변수지정
 int ledR3 = 3;
 int ledR4 = 4;
 int ledR5 = 5;
@@ -16,7 +16,7 @@ Servo myServo;
 
 void setup()
 {
-    pinMode(ledR2, OUTPUT);
+    pinMode(ledR2, OUTPUT);     //  셋업
     pinMode(ledR3, OUTPUT);
     pinMode(ledR4, OUTPUT);
     pinMode(ledR5, OUTPUT);
@@ -30,7 +30,7 @@ void setup()
 void loop()
 {
     int knobservo = analogRead(knob);
-    int pwm = map(knobservo, minsignal, maxsignal, minangle, maxangle);
+    int pwm = map(knobservo, minsignal, maxsignal, minangle, maxangle);     // map함수
 
     Serial.print("ServoAnalog:");
     Serial.println(knobservo);
@@ -43,7 +43,7 @@ void loop()
 
     if (pwm == 0)
     {
-        digitalWrite(ledR2, LOW);
+        digitalWrite(ledR2, LOW);       //  노브 위치 0
         Serial.print("ledR2:OFF\n");
         digitalWrite(ledR3, LOW);
         Serial.print("ledR3:OFF\n");
@@ -57,7 +57,7 @@ void loop()
 
     else if (pwm < 15)
     {
-        digitalWrite(ledR2, HIGH);
+        digitalWrite(ledR2, HIGH);      //  서보 각도 15
         Serial.print("ledR2:ON\n");
         digitalWrite(ledR3, LOW);
         Serial.print("ledR3:OFF\n");
@@ -71,7 +71,7 @@ void loop()
 
     else if (pwm > 15 && pwm < 30)
     {
-        digitalWrite(ledR2, HIGH);
+        digitalWrite(ledR2, HIGH);      //  서보 각도 15 ~ 30
         Serial.print("ledR2:ON\n");
         digitalWrite(ledR3, HIGH);
         Serial.print("ledR3:ON\n");
@@ -85,7 +85,7 @@ void loop()
 
     else if (pwm > 30 && pwm < 45)
     {
-        digitalWrite(ledR2, HIGH);
+        digitalWrite(ledR2, HIGH);      //  서보 각도 30~45
         Serial.print("ledR2:ON\n");
         digitalWrite(ledR3, HIGH);
         Serial.print("ledR3:ON\n");
@@ -99,7 +99,7 @@ void loop()
 
     else if (pwm > 45 && pwm < 60)
     {
-        digitalWrite(ledR2, HIGH);
+        digitalWrite(ledR2, HIGH);      //  서보 각도 45~60
         Serial.print("ledR2:ON\n");
         digitalWrite(ledR3, HIGH);
         Serial.print("ledR3:ON\n");
@@ -111,9 +111,9 @@ void loop()
         Serial.print("ledR6:OFF\n");
     }
 
-    else if (pwm > 60 && pwm < 76)
+    else if (pwm > 60 && pwm < maxangle)
     {
-        digitalWrite(ledR2, HIGH);
+        digitalWrite(ledR2, HIGH);      //  서보 각도 60~max
         Serial.print("ledR2:ON\n");
         digitalWrite(ledR3, HIGH);
         Serial.print("ledR3:ON\n");
