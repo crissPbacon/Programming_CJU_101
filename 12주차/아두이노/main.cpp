@@ -4,7 +4,7 @@
 #define maxangle 75
 #define minangle 0
 
-int ledR2 = 2;      // º¯¼öÁöÁ¤
+int ledR2 = 2;      // ë³€ìˆ˜ì§€ì •
 int ledR3 = 3;
 int ledR4 = 4;
 int ledR5 = 5;
@@ -16,7 +16,7 @@ Servo myServo;
 
 void setup()
 {
-    pinMode(ledR2, OUTPUT);     //  ¼Â¾÷
+    pinMode(ledR2, OUTPUT);     //  ì…‹ì—…
     pinMode(ledR3, OUTPUT);
     pinMode(ledR4, OUTPUT);
     pinMode(ledR5, OUTPUT);
@@ -30,7 +30,7 @@ void setup()
 void loop()
 {
     int knobservo = analogRead(knob);
-    int pwm = map(knobservo, minsignal, maxsignal, minangle, maxangle);     // mapÇÔ¼ö
+    int pwm = map(knobservo, minsignal, maxsignal, minangle, maxangle);     // mapí•¨ìˆ˜
 
     Serial.print("ServoAnalog:");
     Serial.println(knobservo);
@@ -43,7 +43,7 @@ void loop()
 
     if (pwm == 0)
     {
-        digitalWrite(ledR2, LOW);       //  ³ëºê À§Ä¡ 0
+        digitalWrite(ledR2, LOW);       //  ë…¸ë¸Œ ìœ„ì¹˜ 0
         Serial.print("ledR2:OFF\n");
         digitalWrite(ledR3, LOW);
         Serial.print("ledR3:OFF\n");
@@ -57,7 +57,7 @@ void loop()
 
     else if (pwm < 15)
     {
-        digitalWrite(ledR2, HIGH);      //  ¼­º¸ °¢µµ 15
+        digitalWrite(ledR2, HIGH);      //  ì„œë³´ ê°ë„ 15
         Serial.print("ledR2:ON\n");
         digitalWrite(ledR3, LOW);
         Serial.print("ledR3:OFF\n");
@@ -71,7 +71,7 @@ void loop()
 
     else if (pwm > 15 && pwm < 30)
     {
-        digitalWrite(ledR2, HIGH);      //  ¼­º¸ °¢µµ 15 ~ 30
+        digitalWrite(ledR2, HIGH);      //  ì„œë³´ ê°ë„ 15 ~ 30
         Serial.print("ledR2:ON\n");
         digitalWrite(ledR3, HIGH);
         Serial.print("ledR3:ON\n");
@@ -85,7 +85,7 @@ void loop()
 
     else if (pwm > 30 && pwm < 45)
     {
-        digitalWrite(ledR2, HIGH);      //  ¼­º¸ °¢µµ 30~45
+        digitalWrite(ledR2, HIGH);      //  ì„œë³´ ê°ë„ 30~45
         Serial.print("ledR2:ON\n");
         digitalWrite(ledR3, HIGH);
         Serial.print("ledR3:ON\n");
@@ -99,7 +99,7 @@ void loop()
 
     else if (pwm > 45 && pwm < 60)
     {
-        digitalWrite(ledR2, HIGH);      //  ¼­º¸ °¢µµ 45~60
+        digitalWrite(ledR2, HIGH);      //  ì„œë³´ ê°ë„ 45~60
         Serial.print("ledR2:ON\n");
         digitalWrite(ledR3, HIGH);
         Serial.print("ledR3:ON\n");
@@ -113,7 +113,7 @@ void loop()
 
     else if (pwm > 60 && pwm < maxangle)
     {
-        digitalWrite(ledR2, HIGH);      //  ¼­º¸ °¢µµ 60~max
+        digitalWrite(ledR2, HIGH);      //  ì„œë³´ ê°ë„ 60~max
         Serial.print("ledR2:ON\n");
         digitalWrite(ledR3, HIGH);
         Serial.print("ledR3:ON\n");
@@ -125,6 +125,6 @@ void loop()
         Serial.print("ledR6:ON\n");
     }
 
-
+delay(20);
 }
 
