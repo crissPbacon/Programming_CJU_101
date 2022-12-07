@@ -3,6 +3,7 @@
 #define minsignal 0
 #define maxangle 75
 #define minangle 0
+#define antivib 20
 
 int ledR2 = 2;      // 변수지정
 int ledR3 = 3;
@@ -125,6 +126,6 @@ void loop()
         Serial.print("ledR6:ON\n");
     }
 
-delay(20);
+delay(antivib);
 }
 
