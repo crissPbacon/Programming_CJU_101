@@ -1,22 +1,21 @@
-#define stabil 100    //  ÇÏµå¿ş¾î ¾ÈÁ¤ µô·¹ÀÌ ºÎ¿©
-#define maxhumid 870  //  ÃÖ´ë ½Àµµ ÃøÁ¤°ª
-#define minhumid 0    //  ÃÖ¼Ò ½Àµµ ÃøÁ¤°ª
-#define maxsolar 169  //  ÃÖ´ë ºû ÃøÁ¤°ª
-#define minsolar 1    //  ÃÖ¼Ò ºû ÃøÁ¤°ª
+#define stabil 100    //  í•˜ë“œì›¨ì–´ ì•ˆì • ë”œë ˆì´ ë¶€ì—¬
+#define maxhumid 870  //  ìµœëŒ€ ìŠµë„ ì¸¡ì •ê°’
+#define minhumid 0    //  ìµœì†Œ ìŠµë„ ì¸¡ì •ê°’
+#define maxsolar 169  //  ìµœëŒ€ ë¹› ì¸¡ì •ê°’
+#define minsolar 1    //  ìµœì†Œ ë¹› ì¸¡ì •ê°’
 
-int humidSensor = 0;  //  ÇÉ ¹øÈ£ ÁöÁ¤
-int solarSensor = 0;
+int humidSensor = 0;  //  í•€ ë²ˆí˜¸ ì§€ì •
+int solarSensor = 0;  //  ì…ë ¥ í•€
 int botton = 6;
 int autoswitch = 7;
 
-int lightwarning = 2;
+int lightwarning = 2;  //  ì¶œë ¥ í•€
 int headlight = 3;
 int lightwarning2 = 4;
 int allert = 5;
 
-int i;
 
-void setup()         //  ÀÔÃâ·Â ¸ğµå ¼³Á¤
+void setup()         //  ì…ì¶œë ¥ ëª¨ë“œ ì„¤ì •
 {
     Serial.begin(9600);
 
@@ -38,30 +37,30 @@ void setup()         //  ÀÔÃâ·Â ¸ğµå ¼³Á¤
 void loop()
 {
     Serial.print("Switch:ON\n");
-    solarSensor = analogRead(A0);			//  ºû °¨Áö ¼¾¼­ ¼¼ÆÃ
+    solarSensor = analogRead(A0);			//  ë¹› ê°ì§€ ì„¼ì„œ ì„¸íŒ…
     Serial.println(solarSensor);
-    humidSensor = analogRead(A1);           //  ½Àµµ °¨Áö ¼¾¼­ ¼¼ÆÃ
+    humidSensor = analogRead(A1);           //  ìŠµë„ ê°ì§€ ì„¼ì„œ ì„¸íŒ…
     Serial.println(humidSensor);
 
-    if (digitalRead(autoswitch) == HIGH)            // AUTO¸ğµå ºñÈ°¼ºÈ­ »óÅÂ
+    if (digitalRead(autoswitch) == HIGH)            // AUTOëª¨ë“œ ë¹„í™œì„±í™” ìƒíƒœ
     {
-        if (digitalRead(botton) == HIGH)			//  ¹öÆ° ´©¸£¸é Çìµå¶óÀÌÆ® Á¡µî
+        if (digitalRead(botton) == HIGH)			//  ë²„íŠ¼ ëˆ„ë¥´ë©´ í—¤ë“œë¼ì´íŠ¸ ì ë“±
         {
             digitalWrite(headlight, HIGH);
             Serial.print("headlight:ON\n");
         }
         else
         {
-            digitalWrite(headlight, LOW);		//  ¶¼¸é Çìµå¶óÀÌÆ® ¼Òµî
+            digitalWrite(headlight, LOW);		//  ë–¼ë©´ í—¤ë“œë¼ì´íŠ¸ ì†Œë“±
         }
 
 
-        if (solarSensor < (maxsolar / 2))		//  ÇÑ³· ¹à±âÀÇ Àı¹İÀÌ µÇ°í
+        if (solarSensor < (maxsolar / 2))		//  í•œë‚® ë°ê¸°ì˜ ì ˆë°˜ì´ ë˜ê³ 
         {
-            if (digitalRead(botton) == LOW)			//  Çìµå¶óÀÌÆ®°¡ ²¨Á®ÀÖÀ¸¸é
+            if (digitalRead(botton) == LOW)			//  í—¤ë“œë¼ì´íŠ¸ê°€ êº¼ì ¸ìˆìœ¼ë©´
             {
                 digitalWrite(lightwarning, HIGH);
-                Serial.print("lightwarning:ON\n");	//  °æ°íÀ½, °è±âÆÇ °æ°íµî      
+                Serial.print("lightwarning:ON\n");	//  ê²½ê³ ìŒ, ê³„ê¸°íŒ ê²½ê³ ë“±      
                 tone(allert, 196, 100);
                 delay(500);
                 digitalWrite(lightwarning, LOW);
@@ -69,27 +68,27 @@ void loop()
                 tone(allert, 164, 100);
                 delay(100);
             }
-            else									// ¹ÛÀÌ ÃæºĞÈ÷ ¹à´Ù¸é
+            else									// ë°–ì´ ì¶©ë¶„íˆ ë°ë‹¤ë©´
             {
-                digitalWrite(lightwarning, LOW);		//  °æ°íÀ½, °è±âÆÇ °æ°íµî ÀÛµ¿x
+                digitalWrite(lightwarning, LOW);		//  ê²½ê³ ìŒ, ê³„ê¸°íŒ ê²½ê³ ë“± ì‘ë™x
                 noTone(allert);
             }
         }
     }
     else
     {
-        noTone(allert);                         //  AUTO¸ğµå È°¼ºÈ­ »óÅÂ
+        noTone(allert);                         //  AUTOëª¨ë“œ í™œì„±í™” ìƒíƒœ
         digitalWrite(lightwarning, LOW);
         Serial.print("lightwarning:OFF\n");
 
-        if (solarSensor < (maxsolar / 2))       //  ¾îµÎ¿ì¸é ÀÚµ¿À¸·Î Çìµå¶óÀÌÆ® Á¡µî
+        if (solarSensor < (maxsolar / 2))       //  ì–´ë‘ìš°ë©´ ìë™ìœ¼ë¡œ í—¤ë“œë¼ì´íŠ¸ ì ë“±
         {
             digitalWrite(headlight, HIGH);
             Serial.print("headlight:ON\n");
         }
         else
         {
-            digitalWrite(headlight, LOW);       //  ¹àÀ¸¸é Çìµå¶óÀÌÆ® ¼Òµî
+            digitalWrite(headlight, LOW);       //  ë°ìœ¼ë©´ í—¤ë“œë¼ì´íŠ¸ ì†Œë“±
             Serial.print("headlight:OFF\n");
         }
     }
@@ -98,19 +97,19 @@ void loop()
 
 
 
-    if (humidSensor > (maxhumid * 0.9))		//  ¾È°³ ¹ß»ı½Ã ¾È°³ °æ°íµî Á¡µî
+    if (humidSensor > (maxhumid * 0.9))		//  ì•ˆê°œ ë°œìƒì‹œ ì•ˆê°œ ê²½ê³ ë“± ì ë“±
     {
         digitalWrite(lightwarning2, HIGH);
         Serial.print("lightwarning2:ON\n");
     }
     else
     {
-        digitalWrite(lightwarning2, LOW);       //  ¾È°³ ¾øÀ¸¸é ¼Òµî
+        digitalWrite(lightwarning2, LOW);       //  ì•ˆê°œ ì—†ìœ¼ë©´ ì†Œë“±
         Serial.print("lightwarning2:OFF\n");
     }
 
 
 
 
-    delay(stabil);      //  ÇÏµå¿ş¾î ½Ã½ºÅÛ ¾ÈÁ¤ µô·¹ÀÌ ºÎ¿©
+    delay(stabil);      //  í•˜ë“œì›¨ì–´ ì‹œìŠ¤í…œ ì•ˆì • ë”œë ˆì´ ë¶€ì—¬
 }
